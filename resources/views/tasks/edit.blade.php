@@ -8,7 +8,7 @@
             @endforeach
         </ul>
     @endif
-    <h1>id: {{ $taskedit->id }} の編集ページ</h1>
+    <h1>編集ページ</h1>
 
     <div class="row">
         <div class="col-6">
