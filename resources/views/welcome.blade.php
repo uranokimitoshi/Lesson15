@@ -7,21 +7,39 @@
                 <div class="card">
                 
                     <div class="card-header">
-                        
-                        <h3 class="card-title">{{ Auth::user()->name }}</h3>
+                        こんにちは
+                        <p class="card-title">{{ Auth::user()->name }}　さん</p>
                     </div>
                     
                 </div>
             </aside>
-            <div class="col-sm-8">
-                
-                
-                @if (count($tasks) > 0)
-                    @include('tasks.tasks', ['tasks' => $tasks])
-                @endif
-            </div>
-        </div>
-        
+            
+</div>
+     @if (count($tasks) > 0)
+      <table class="table table-striped">
+            <thead>
+               <tr>
+                    <th>id</th>
+                    <th>ステータス
+                    </th>
+                    <th>内容</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($tasks as $task)
+                <tr>
+                    <td>{!! link_to_route('tasks.show', $task->id, ['id' => $task->id]) !!}</td>
+                   
+                    <td>{{ $task->status }}</td>
+                    <td>{{ $task->content }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+     @endif
+     {{ $tasks->links('pagination::bootstrap-4') }}
+{!! link_to_route('tasks.create', '投稿ページへ',[],['class' => 'btn btn-lg btn-primary']) !!}
+
  @else
     <div class="center jumbotron">
         <div class="text-center">

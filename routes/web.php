@@ -13,10 +13,7 @@
 
 Route::get('/', 'TasksController@index');
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource('users', 'UsersController',['only' => ['index', 'show']]);
-    Route::get('tasks/create', 'TasksController@create')->name("tasks.create");
-    Route::post('tasks', 'TasksController@store')->name("tasks.store");
-    Route::resource('tasks', 'TasksController', ['only' => ['store', 'destroy','show','edit',"update"]]);
+    Route::resource('tasks', 'TasksController');
     });
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
