@@ -25,6 +25,7 @@
             <th>内容</th>
             <td>{{ $taskshow->content }}</td>
         </tr>
+        
     </table>
     {!! link_to_route('tasks.edit', '編集', ['id' => $taskshow->id], ['class' => 'btn btn-light']) !!}
     {!! Form::model($taskshow,["route"=>["tasks.destroy",$taskshow->id],"method"=>"delete"]) !!}

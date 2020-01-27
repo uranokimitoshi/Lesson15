@@ -20,9 +20,9 @@
             <thead>
                <tr>
                     <th>id</th>
-                    <th>ステータス
-                    </th>
+                    <th>ステータス</th>
                     <th>内容</th>
+                    <th>time</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,6 +32,8 @@
                    
                     <td>{{ $task->status }}</td>
                     <td>{{ $task->content }}</td>
+                    <td>{{ $task->created_at }}</td>
+                    
                 </tr>
                 @endforeach
             </tbody>
