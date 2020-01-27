@@ -90,7 +90,10 @@ class TasksController extends Controller
     public function edit($id)
     {
         $taskedit=Task::find($id);
+         if (\Auth::id() === $taskedit->user_id) {
         return view("tasks.edit",["taskedit"=>$taskedit]);
+    }
+        return redirect("/");
     }
 
     /**
@@ -104,9 +107,11 @@ class TasksController extends Controller
     {
         $this->validate($request,["status"=> "required|max:10"]);
         $taskupdate = Task::find($id);
+        if (\Auth::id() === $taskupdate->user_id) {
         $taskupdate->content = $request->content;
         $taskupdate->status = $request->status;
         $taskupdate->save();
+        }
         return redirect("/");
     }
 
